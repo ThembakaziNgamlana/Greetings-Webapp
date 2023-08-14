@@ -1,0 +1,84 @@
+label {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid palevioletred;
+  }
+  input[type="text"] {
+    display: inline-block;
+    width: 200px;
+    padding: 5px;
+  }
+body{
+    background-color: palevioletred;
+    text-size-adjust: 40px;
+}
+.message{
+  text-align: center;
+}
+
+ .numberString{
+  padding-right: 40px;
+  background-color: palevioletred;
+  height: 40px;
+  width: 60px;
+} 
+
+.main_heading{
+   text-align: center;
+  /* padding-right: 200px; */
+  /*display: inline-block;*/
+  /*padding: 10px;*/
+  background-color: gray;
+  border: 1px solid grey;
+ /* margin: 0 auto;*/
+  
+}
+.intro{
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.enter{
+  text-align: center;
+}
+
+.lang{
+  padding-top: 40px;
+  text-align: center;
+}
+.validationMessage{
+  color: aqua;
+}
+
+.message{
+  color:red;
+}
+
+.my_greetings{
+    text-align:center;
+    padding-bottom: 100px;
+    padding-top: 40px;
+}
+
+.radioBtn{
+    text-align: center;
+    padding-top: 40px;
+}
+
+.button{
+  text-align: center;
+  padding-top: 40px;
+}
+
+
+
+
+
+@media(min-width:960px){
+  .greetings{
+       display:flex;
+   }
+}         

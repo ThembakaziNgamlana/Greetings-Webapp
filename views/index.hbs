@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Web Form</title>
+    <link rel="stylesheet" href="../stlye.css">
+</head>
+<body>
+   
+
+   
+
+    <div class="main_heading">
+        <h1>Greeting</h1>
+    </div>
+  
+   <form action="/greetings" method="POST"> 
+
+        <div class="intro">
+            <label for="name">Name:</label>
+            <input name="name" type="text" id="userName" class="textString" placeholder="Enter a name">
+            <br>
+        </div>
+
+
+ 
+
+    <div class="message">
+        <p class="greetingMessage" >
+            {{ greetingMessage}}
+        </p>
+
+        <p class="validationMessage"></p>
+    </div>
+
+     <div class="enter">
+    <input type="radio" name="language" class="lang" id="english" value="english">
+    <label for="english">English</label>
+    <input type="radio" name="language" class="lang" id="isixhosa" value="isixhosa">
+    <label for="isixhosa">IsiXhosa</label>
+    <input type="radio" name="language" class="lang" id="french" value="french">
+    <label for="french">French</label>
+    <br>
+</div>
+
+<span class="greetCount">Total Greeted: {{ greetedCount }}</span>
+
+        <div class="button">
+            <button class="radiolanguage" type="submit">Greet</button>
+            
+        </div>
+    </form>
+
+    <form>
+        <button class="refreshBtn" type="submit">Reset</button>
+    </form>
+</body>
+</html>
+
