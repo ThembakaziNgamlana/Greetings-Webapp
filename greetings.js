@@ -9,9 +9,24 @@ export default function createGreetingApp() {
       }
   }
 
-  function resetPeopleNamesCount() {
+  
+    function resetPeopleNamesCount(){
       greetCount = 0;
       lastGreetedName = '';
+      getGreetingMessage = '';
+      incrementPeopleNamesCount = ''
+
+  }
+
+  function greetFunction(name){
+  const collecteName = inputSpring(name)
+ if  (!alreadyGreeted[collecteName]){
+  greetNames[collecteName] = 1
+  greetCount++
+   return false;
+ }
+  greetNames[collecteName] ++
+  return true;
   }
 
   function getNameCount() {
@@ -30,11 +45,33 @@ export default function createGreetingApp() {
       return greeting;
   }
 
+
+  function handleGreetBtnClick() {
+  if (!selectedName && !selectedLanguage) {
+    return ('Please enter a name and select a language.');
+  
+    }
+
+    else if  (!selectedName) {
+      return ('Please enter a name.');
+      
+    }
+
+    else if (!selectedLanguage) {
+      return ('Please select a language.');
+      
+    }
+  }
+
+
+
   return {
       incrementPeopleNamesCount,
       resetPeopleNamesCount,
       getNameCount,
-      getGreetingMessage
+      getGreetingMessage,
+      handleGreetBtnClick,
+      greetFunction
   };
 }
 

@@ -23,6 +23,10 @@ app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
+app.post('/reset', (req, res) => {
+    greet.resetPeopleNamesCount();
+    res.redirect('/');
+});
 
 app.get('/', function (req, res) {
     res.render('index');
@@ -44,7 +48,7 @@ app.post('/greetings', (req, res) => {
         greet.incrementPeopleNamesCount(name);
     }
     
-    res.render('index', {greetingMessage});
+    res.render('index', {greetingMessage, greetedCount: greet.getNameCount()});
 });
 
 
