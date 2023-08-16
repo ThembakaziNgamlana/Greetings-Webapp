@@ -17,6 +17,10 @@ export default function createGreetingApp() {
       return true
     }
 
+    function getGreetCountForUser(userName) {
+      return greetedNames[userName] || 0;
+    }
+
     function reset() {
       greetCount = 0;
       lastGreetedName = {};
@@ -72,7 +76,8 @@ function greetFunction(){
       getGreetingMessage,
       handleGreetBtnClick,
      greetFunction,
-    reset
+     getGreetCountForUser,
+    reset,
     
     
   };

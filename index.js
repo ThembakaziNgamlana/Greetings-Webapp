@@ -39,12 +39,26 @@ app.get('/', function (req, res) {
       validationMessage: ''
     });
 });
-
-
-
 app.get('/greetAction', function (req, res) {
-    res.render('greetAction', { greetedNames: greet.greetFunction() });
-});
+    const greetedNames = greet.greetFunction();
+    res.render('greetAction', { greetedNames, greet });
+  });
+
+
+  app.get('/greetAction', function (req, res) {
+    const greetedNames = greet.greetFunction();
+    const usersWithGreetCount = Object.keys(greetedNames).map(userName => {
+      return { name: userName, greetCount: greet.getGreetCountForUser(userName) };
+    });
+    
+    res.render('greetAction', { usersWithGreetCount });
+  });
+  
+app.get('/greetAction', function (req, res) {
+    const greetedNames = greet.greetFunction();
+  
+    res.render('greetAction', { greetedNames });
+  });
 
 app.post('/reset', function (req, res) {
     greet.reset();
