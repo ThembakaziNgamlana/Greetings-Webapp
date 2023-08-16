@@ -14,6 +14,10 @@
     <div class="main_heading">
         <h1>Greeting</h1>
     </div>
+
+    <form greetaction="/action" method="POST">
+    
+    </form>
   
    <form action="/greetings" method="POST"> 
 
@@ -31,8 +35,12 @@
             {{ greetingMessage}}
         </p>
 
-        <p class="validationMessage"></p>
+        
     </div>
+
+<div>
+    <p class="validationMessage">{{ validationMessage }}</p>
+</div>
 
      <div class="enter">
     <input type="radio" name="language" class="lang" id="english" value="english">
@@ -52,9 +60,9 @@
         </div>
     </form>
 
-    <form action="/reset" method="post"></form>
+    {{!-- <form action="/reset" method="post"></form>
         <button class="refreshBtn" type="submit">Reset</button>
-    </form>
+    </form> --}}
 </body>
 </html>
 

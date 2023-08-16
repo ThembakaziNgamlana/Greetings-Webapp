@@ -23,30 +23,54 @@ app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-app.post('/reset', (req, res) => {
-    greet.resetPeopleNamesCount();
-    res.redirect('/');
-});
 
 app.get('/', function (req, res) {
     res.render('index');
 });
 
  app.get('/greetings', (req, res) => {
-   res.render('greetings', { greetedCount: greet.getNameCount() });
+   res.render('index', { greetedCount: greet.getNameCount() });
+
  });
 
+ app.get('/greetings', (req, res) => {
+ res.render('greetings', {
+       greetedCount: greet.getNameCount(),
+      validationMessage: ''
+    });
+});
+
+app.get('/greetAction', function (req, res) {
+    res.render('greetAction', { greetedNames: greet.greetedNames });
+});
 
 
 app.post('/greetings', (req, res) => {
     const name = req.body.name;
     const language = req.body.language; 
-    
-    const greetingMessage = greet.getGreetingMessage(language, name);
 
-    if (name && language) {
+    const validationMessage = greet.handleGreetBtnClick(name, language); 
+
+    const greetingMessage = greet.getGreetingMessage(language, name);
+    
+    if (validationMessage) { 
+        res.render('index', {
+            greetedCount: greet.getNameCount(),
+            validationMessage,
+            greetingMessage
+        });
+    } else {
+        greet.incrementPeopleNamesCount(name);
+        res.render('index', {
+            greetingMessage,
+            greetedCount: greet.getNameCount()
+        });
+    }
+
+if (name && language) {
         greet.incrementPeopleNamesCount(name);
     }
+
     
     res.render('index', {greetingMessage, greetedCount: greet.getNameCount()});
 });

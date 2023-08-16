@@ -1,22 +1,22 @@
 export default function createGreetingApp() {
   let greetCount = 0;
   let lastGreetedName = '';
+  let greetedNames = {};
   
   function incrementPeopleNamesCount(selectedName) {
       if (selectedName !== lastGreetedName) {
           greetCount++;
           lastGreetedName = selectedName;
       }
+      if (!greetedNames[selectedName]) {
+        greetedNames[selectedName] = 1;
+    } else {
+        greetedNames[selectedName]++;
+    }
   }
 
   
-    function resetPeopleNamesCount(){
-      greetCount = 0;
-      lastGreetedName = '';
-      getGreetingMessage = '';
-      incrementPeopleNamesCount = ''
-
-  }
+   
 
   function greetFunction(name){
   const collecteName = inputSpring(name)
@@ -46,7 +46,7 @@ export default function createGreetingApp() {
   }
 
 
-  function handleGreetBtnClick() {
+  function handleGreetBtnClick(selectedName, selectedLanguage) {
   if (!selectedName && !selectedLanguage) {
     return ('Please enter a name and select a language.');
   
@@ -67,11 +67,12 @@ export default function createGreetingApp() {
 
   return {
       incrementPeopleNamesCount,
-      resetPeopleNamesCount,
       getNameCount,
       getGreetingMessage,
       handleGreetBtnClick,
-      greetFunction
+      greetFunction,
+      greetedNames
+    
   };
 }
 
