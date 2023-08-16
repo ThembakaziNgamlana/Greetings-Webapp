@@ -25,6 +25,7 @@
             <label for="name">Name:</label>
             <input name="name" type="text" id="userName" class="textString" placeholder="Enter a name">
             <br>
+            
         </div>
 
 
@@ -38,9 +39,7 @@
         
     </div>
 
-<div>
-    <p class="validationMessage">{{ validationMessage }}</p>
-</div>
+
 
      <div class="enter">
     <input type="radio" name="language" class="lang" id="english" value="english">
@@ -50,19 +49,34 @@
     <input type="radio" name="language" class="lang" id="french" value="french">
     <label for="french">French</label>
     <br>
+    <span class="greetCount"><a href="/greetAction" > Total Greeted: </a>{{ greetedCount }}</span>
+    <div>
+        
+    <p class="validationMessage">{{ validationMessage }}</p>
+</div> 
 </div>
 
-<span class="greetCount"><a href="/greetAction" > Total Greeted: </a>{{ greetedCount }}</span> 
+<div class="button">
+    <button class="radiolanguage" type="submit">Greet</button>
+  </div>
 
-        <div class="button">
-            <button class="radiolanguage" type="submit">Greet</button>
-            
-        </div>
-    </form>
+</form>
 
-    <form action="/reset" method="post"></form>
-        <button class="refreshBtn" type="submit">Reset</button>
-    </form> 
+
+        
+
+     
+<form action="/reset" method="POST">
+
+    <div class="button">
+      <button class="refreshBtn" type="submit">Reset</button>
+    </div>
+</form>
+
+
+  
+
+   
 
 </body>
 </html>

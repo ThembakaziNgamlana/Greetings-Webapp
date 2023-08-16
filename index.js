@@ -40,9 +40,21 @@ app.get('/', function (req, res) {
     });
 });
 
+
+
 app.get('/greetAction', function (req, res) {
     res.render('greetAction', { greetedNames: greet.greetFunction() });
 });
+
+app.post('/reset', function (req, res) {
+    greet.reset();
+  
+    res.render('index', {
+      validationMessage: '', 
+      greetedCount: 0,
+      action: '' 
+    });
+  });
 
 
 app.post('/greetings', (req, res) => {

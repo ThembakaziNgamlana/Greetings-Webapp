@@ -31,8 +31,7 @@ body{
   /* padding-right: 200px; */
   /*display: inline-block;*/
   /*padding: 10px;*/
-  background-color: gray;
-  border: 1px solid grey;
+  
  /* margin: 0 auto;*/
   
 }
@@ -50,11 +49,11 @@ body{
   text-align: center;
 }
 .validationMessage{
-  color: aqua;
+  color:red;
 }
 
 .message{
-  color:red;
+  color:white;
 }
 
 .my_greetings{
