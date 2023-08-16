@@ -1,32 +1,24 @@
 export default function createGreetingApp() {
   let greetCount = 0;
-  let lastGreetedName = '';
+  let lastGreetedName = {};
   let greetedNames = {};
   
   function incrementPeopleNamesCount(selectedName) {
-      if (selectedName !== lastGreetedName) {
-          greetCount++;
-          lastGreetedName = selectedName;
+      if ( !greetedNames[selectedName]) {
+        greetedNames[selectedName]= true
+
+        greetCount++;
+
+          lastGreetedName[selectedName] = 1;
+          return false
       }
-      if (!greetedNames[selectedName]) {
-        greetedNames[selectedName] = 1;
-    } else {
-        greetedNames[selectedName]++;
+          greetedNames[selectedName]++;
+      return true
     }
-  }
 
-  
-   
 
-  function greetFunction(name){
-  const collecteName = inputSpring(name)
- if  (!alreadyGreeted[collecteName]){
-  greetNames[collecteName] = 1
-  greetCount++
-   return false;
- }
-  greetNames[collecteName] ++
-  return true;
+function greetFunction(){
+    return greetedNames
   }
 
   function getNameCount() {
@@ -70,8 +62,7 @@ export default function createGreetingApp() {
       getNameCount,
       getGreetingMessage,
       handleGreetBtnClick,
-      greetFunction,
-      greetedNames
+     greetFunction
     
   };
 }

@@ -41,7 +41,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/greetAction', function (req, res) {
-    res.render('greetAction', { greetedNames: greet.greetedNames });
+    res.render('greetAction', { greetedNames: greet.greetFunction() });
 });
 
 
