@@ -49,7 +49,7 @@
     <input type="radio" name="language" class="lang" id="french" value="french">
     <label for="french">French</label>
     <br>
-    <span class="greetCount"><a href="/greetAction" > Total Greeted: </a>{{ greetedCount }}</span>
+    <span class="greetCount"><a href="/greetAction" > Total Greeted: </a>{{greetedCount }}</span>
     <div>
         
     <p class="validationMessage">{{ validationMessage }}</p>
@@ -58,20 +58,26 @@
 
 <div class="button">
     <button class="radiolanguage" type="submit">Greet</button>
+
+ 
   </div>
 
 </form>
 
 
         
-
-     
 <form action="/reset" method="POST">
-
-    <div class="button">
+<div class="button">
       <button class="refreshBtn" type="submit">Reset</button>
     </div>
+
+
 </form>
+     
+
+
+   
+
 
 
   
@@ -80,4 +86,5 @@
 
 </body>
 </html>
+
 

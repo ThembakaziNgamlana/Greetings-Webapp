@@ -45,19 +45,17 @@ app.get('/greetAction', function (req, res) {
   });
 
 
-  app.get('/greetAction', function (req, res) {
-    const greetedNames = greet.greetFunction();
-    const usersWithGreetCount = Object.keys(greetedNames).map(userName => {
-      return { name: userName, greetCount: greet.getGreetCountForUser(userName) };
-    });
-    
-    res.render('greetAction', { usersWithGreetCount });
-  });
+//   app.get('/getGreetCount/:userName', (req, res) => {
+//     const userName = req.params.userName;
+//     const greetCount = getGreetCountForUser(userName);
+
+//     res.json({ userName, greetCount });
+// });
   
 app.get('/greetAction', function (req, res) {
     const greetedNames = greet.greetFunction();
-  
-    res.render('greetAction', { greetedNames });
+   const  usersWithGreetCount = greet.greetedNames
+    res.render('greetAction', { greetedNames , usersWithGreetCount}) ;
   });
 
 app.post('/reset', function (req, res) {
@@ -83,7 +81,7 @@ app.post('/greetings', (req, res) => {
         res.render('index', {
             greetedCount: greet.getNameCount(),
             validationMessage,
-            greetingMessage
+            greetingMessage: ''
         });
     } else {
         greet.incrementPeopleNamesCount(name);

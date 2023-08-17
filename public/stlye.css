@@ -1,9 +1,8 @@
 label {
-    display: inline-block;
-    width: 80px;
-    text-align: right;
-    margin-right: 10px;
-    padding: 5px;
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  margin-right: 5px;
     border: 1px solid palevioletred;
   }
   input[type="text"] {
@@ -12,8 +11,11 @@ label {
     padding: 5px;
   }
 body{
+   
+    background-size: cover;
     background-color: palevioletred;
-    text-size-adjust: 40px;
+    text-align: center;
+    font-size: 24px; /* Increased font size */
 }
 .message{
   text-align: center;
@@ -25,6 +27,11 @@ body{
   height: 40px;
   width: 60px;
 } 
+.button-group {
+  display: flex;
+  justify-content: space-around; /* Add space between buttons */
+  margin-top: 20px;
+}
 
 .main_heading{
    text-align: center;
@@ -35,6 +42,13 @@ body{
  /* margin: 0 auto;*/
   
 }
+
+input[type="text"] {
+  display: inline-block;
+  width: 200px;
+  padding: 5px;
+}
+
 .intro{
   padding-bottom: 40px;
   text-align: center;
@@ -45,8 +59,10 @@ body{
 }
 
 .lang{
-  padding-top: 40px;
-  text-align: center;
+  display: inline-block;
+    padding-top: 10px;
+    text-align: center;
+    margin-right: 10px;
 }
 .validationMessage{
   color:red;
@@ -54,6 +70,7 @@ body{
 
 .message{
   color:white;
+  text-align: center;
 }
 
 .my_greetings{
@@ -71,13 +88,23 @@ body{
   text-align: center;
   padding-top: 40px;
 }
+.radiolanguage {
+  margin-right: 10px;
+}
 
 
-
+.greetCount {
+  display: inline-block;
+  font-size: 20px; /* Adjust as needed */
+}
 
 
 @media(min-width:960px){
   .greetings{
        display:flex;
+       justify-content: center;
+       align-items: center;
+       min-height: 100vh;
+
    }
 }         
