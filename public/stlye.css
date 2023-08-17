@@ -3,7 +3,7 @@ label {
   width: 100px;
   text-align: right;
   margin-right: 5px;
-    border: 1px solid palevioletred;
+    border: 1px solid yellow;
   }
   input[type="text"] {
     display: inline-block;
@@ -11,9 +11,9 @@ label {
     padding: 5px;
   }
 body{
-   
+  background-image: url('./images/demo2.avif');
+  background-repeat: no-repeat;
     background-size: cover;
-    background-color: palevioletred;
     text-align: center;
     font-size: 24px; /* Increased font size */
 }
@@ -23,7 +23,7 @@ body{
 
  .numberString{
   padding-right: 40px;
-  background-color: palevioletred;
+ 
   height: 40px;
   width: 60px;
 } 

@@ -52,11 +52,11 @@ app.get('/greetAction', function (req, res) {
 //     res.json({ userName, greetCount });
 // });
   
-app.get('/greetAction', function (req, res) {
-    const greetedNames = greet.greetFunction();
-   const  usersWithGreetCount = greet.greetedNames
-    res.render('greetAction', { greetedNames , usersWithGreetCount}) ;
-  });
+// app.get('/greetAction', function (req, res) {
+//     const greetedNames = greet.greetFunction();
+//    const  usersWithGreetCount = greet.greetedNames
+//     res.render('greetAction', { greetedNames , usersWithGreetCount}) ;
+//   });
 
 app.post('/reset', function (req, res) {
     greet.reset();

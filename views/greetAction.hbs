@@ -1,17 +1,17 @@
 <div class="row"></div>
-<h1>Actions</h1>
+<h1>Names greeted</h1>
 
 
 <table>
   <tr>
       <th>Name</th>
-      <th>How many times has the name been greeted</th>
+      {{!-- <th>How many times has the name been greeted</th> --}}
 
   </tr>
   {{#each greetedNames}}
   <tr>
     <td>{{@key}}</td>
-    <td>{{@this}}</td>
+    {{!-- <td>{{@this}}</td> --}}
   </tr>
   {{/each}}
 </table>
