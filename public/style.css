@@ -10,6 +10,9 @@ label {
     width: 200px;
     padding: 5px;
   }
+  .greetPage{
+    background-color: yellow;
+  }
 body{
   background-image: url('./images/demo2.avif');
   background-repeat: no-repeat;
@@ -17,6 +20,15 @@ body{
     text-align: center;
     font-size: 24px; /* Increased font size */
 }
+
+.greet {
+  background-image: url('./images/demo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
 .message{
   text-align: center;
 }

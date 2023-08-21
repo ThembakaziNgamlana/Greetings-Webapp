@@ -3,6 +3,9 @@ import exphbs from 'express-handlebars';
 import bodyParser from 'body-parser';
 import createGreetingApp from './greetings.js';
 
+
+
+
 const app = express();
 const greet = createGreetingApp();
 
@@ -45,18 +48,20 @@ app.get('/greetAction', function (req, res) {
   });
 
 
-//   app.get('/getGreetCount/:userName', (req, res) => {
+//   app.get('/userCount/:userName', (req, res) => {
 //     const userName = req.params.userName;
-//     const greetCount = getGreetCountForUser(userName);
+//     const greetCountForUser = greet.getGreetCountForUser(userName);
 
-//     res.json({ userName, greetCount });
+//     res.json({userName, greetCountForUser });
 // });
+app.get('/userCount/:userName', (req, res) => {
+    const userName = req.params.userName;
+    const greetCountForUser = greet.getGreetCountForUser(userName);
   
-// app.get('/greetAction', function (req, res) {
-//     const greetedNames = greet.greetFunction();
-//    const  usersWithGreetCount = greet.greetedNames
-//     res.render('greetAction', { greetedNames , usersWithGreetCount}) ;
-//   });
+    const greetMessage = `${userName} has been greeted ${greetCountForUser} times.`;
+    res.send(greetMessage);
+  });
+
 
 app.post('/reset', function (req, res) {
     greet.reset();
@@ -69,36 +74,80 @@ app.post('/reset', function (req, res) {
   });
 
 
+// app.post('/greetings', (req, res) => {
+//     const name = req.body.name;
+//     const language = req.body.language; 
+
+//     const validationMessage = greet.handleGreetBtnClick(name, language); 
+
+//     const greetingMessage = greet.getGreetingMessage(language, name);
+    
+//     if (validationMessage) { 
+//         res.render('index', {
+//             greetedCount: greet.getNameCount(),
+//             validationMessage,
+//             greetingMessage: ''
+//         });} 
+//         // else {
+//     //     greet.incrementPeopleNamesCount(name);
+//     //     res.render('index', {
+//     //         greetingMessage,
+//     //         greetedCount: greet.getNameCount()
+//     //     });
+//     // }
+
+// // if (name && language) {
+// //         greet.incrementPeopleNamesCount(name);
+// //     }
+// else {
+//                 res.render('index', {
+//                     validationMessage: 'User has already been greeted.',
+//                     greetedCount: greet.getNameCount(),
+//                     greetingMessage: ''
+//                 });
+//             }
+    
+//     res.render('index', {greetingMessage, greetedCount: greet.getNameCount()});
+// });
+
 app.post('/greetings', (req, res) => {
-    const name = req.body.name;
-    const language = req.body.language; 
+  const name = req.body.name;
+  const language = req.body.language; 
 
-    const validationMessage = greet.handleGreetBtnClick(name, language); 
+  const validationMessage = greet.handleGreetBtnClick(name, language); 
 
-    const greetingMessage = greet.getGreetingMessage(language, name);
-    
-    if (validationMessage) { 
-        res.render('index', {
-            greetedCount: greet.getNameCount(),
-            validationMessage,
-            greetingMessage: ''
-        });
-    } else {
-        greet.incrementPeopleNamesCount(name);
-        res.render('index', {
-            greetingMessage,
-            greetedCount: greet.getNameCount()
-        });
-    }
-
-if (name && language) {
-        greet.incrementPeopleNamesCount(name);
-    }
-
-    
-    res.render('index', {greetingMessage, greetedCount: greet.getNameCount()});
+  const greetingMessage = greet.getGreetingMessage(language, name);
+  
+  if (validationMessage) { 
+      res.render('index', {
+          greetedCount: greet.getNameCount(),
+          validationMessage,
+          greetingMessage: ''
+      });
+  } else {
+      if (name && language) {
+          const greeted = greet.incrementPeopleNamesCount(name);
+          if (greeted) {
+              res.render('index', {
+                  greetingMessage,
+                  greetedCount: greet.getNameCount()
+              });
+          } else {
+              res.render('index', {
+                  validationMessage: 'User has already been greeted.',
+                  greetedCount: greet.getNameCount(),
+                  greetingMessage: ''
+              });
+          }
+      } else {
+          res.render('index', {
+              greetedCount: greet.getNameCount(),
+              validationMessage: 'Please enter a name and select a language.',
+              greetingMessage: ''
+          });
+      }
+  }
 });
-
 
 
 const PORT = process.env.PORT || 3011;

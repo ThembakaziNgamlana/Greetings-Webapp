@@ -5,13 +5,12 @@
 <table>
   <tr>
       <th>Name</th>
-      {{!-- <th>How many times has the name been greeted</th> --}}
 
   </tr>
+  
   {{#each greetedNames}}
   <tr>
-    <td>{{@key}}</td>
-    {{!-- <td>{{@this}}</td> --}}
+     <td><a href="/userCount/{{@key}}">{{@key}}</a></td>
   </tr>
   {{/each}}
 </table>

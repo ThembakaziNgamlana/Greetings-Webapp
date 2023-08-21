@@ -6,21 +6,20 @@ export default function createGreetingApp() {
 
   function incrementPeopleNamesCount(selectedName) {
       if ( !greetedNames[selectedName]) {
-        greetedNames[selectedName]= true
-
+        greetedNames[selectedName]= 1
         greetCount++;
-
-         // lastGreetedName[selectedName] = 1;
-          return false
+        return false
+          //lastGreetedName[selectedName] = 1;
+        
       }
-          greetedNames[selectedName]++;
+        greetedNames[selectedName]++;
       return true
     }
 
 
-    // function getGreetCountForUser() {
-    //   return greetCount
-    // }
+    function getGreetCountForUser(userName) {
+      return greetedNames[userName] || 0;
+    }
 
     function reset() {
       greetCount = 0;
@@ -78,7 +77,7 @@ function greetFunction(){
       getGreetingMessage,
       handleGreetBtnClick,
      greetFunction,
-     //getGreetCountForUser,
+    getGreetCountForUser,
     reset,
     
     
