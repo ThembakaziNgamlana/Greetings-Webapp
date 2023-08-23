@@ -33,7 +33,7 @@
 
     <div class="message">
         <p class="greetingMessage" >
-            {{ greetingMessage}}
+            {{greeting}}
         </p>
 
         
@@ -52,7 +52,9 @@
     <span class="greetCount"><a href="/greetAction" > Total Greeted: </a>{{greetedCount }}</span>
     <div>
         
-    <p class="validationMessage">{{ validationMessage }}</p>
+ {{#if validationMessage}}
+        <p class="validationMessage">{{ validationMessage }}</p>
+        {{/if}}
 </div> 
 </div>
 
