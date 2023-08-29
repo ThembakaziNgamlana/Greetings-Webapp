@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greeting Web Form</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
    
@@ -33,36 +33,32 @@
 
     <div class="message">
         <p class="greetingMessage" >
-            {{greeting}}
+            {{greetingMessage}}
         </p>
 
         
     </div>
+   <div class="enter">
+        <input type="radio" name="language" class="lang" id="english" value="english">
+        <label for="english">English</label>
+        <input type="radio" name="language" class="lang" id="isixhosa" value="isixhosa">
+        <label for="isixhosa">IsiXhosa</label>
+        <input type="radio" name="language" class="lang" id="french" value="french">
+        <label for="french">French</label>
+        <br>
+        <span class="greeted"><a href="/greeted">Total Greeted: </a>{{count}}</span>
+       <div>
 
-
-
-     <div class="enter">
-    <input type="radio" name="language" class="lang" id="english" value="english">
-    <label for="english">English</label>
-    <input type="radio" name="language" class="lang" id="isixhosa" value="isixhosa">
-    <label for="isixhosa">IsiXhosa</label>
-    <input type="radio" name="language" class="lang" id="french" value="french">
-    <label for="french">French</label>
-    <br>
-    <span class="greetCount"><a href="/greetAction" > Total Greeted: </a>{{greetedCount }}</span>
-    <div>
-        
- {{#if validationMessage}}
+    {{#if validationMessage}}
         <p class="validationMessage">{{ validationMessage }}</p>
-        {{/if}}
-</div> 
+    {{/if}}
 </div>
 
-<div class="button">
-    <button class="radiolanguage" type="submit">Greet</button>
+    </div>
 
- 
-  </div>
+    <div class="button">
+        <button type="submit">Greet</button>
+    </div>
 
 </form>
 

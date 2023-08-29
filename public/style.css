@@ -10,23 +10,25 @@ label {
     width: 200px;
     padding: 5px;
   }
-  .greetPage{
+  /* .greetPage{
     background-color: yellow;
-  }
+  } */
 body{
   background-image: url('./images/demo2.avif');
+  
   background-repeat: no-repeat;
+  background-attachment: fixed;
     background-size: cover;
     text-align: center;
-    font-size: 24px; /* Increased font size */
-}
+    font-size: 24px; 
+} 
 
-.greet {
-  background-image: url('./images/demo.jpg');
+/* .greet {
+  background-image: url('/public/images/demo.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
+}  */
 
 
 .message{

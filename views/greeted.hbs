@@ -1,3 +1,8 @@
+
+<div class="greet">
+
+
+
 <div class="row"></div>
 <h1>Names greeted</h1>
 
@@ -10,8 +15,16 @@
   
   {{#each greetedNames}}
   <tr>
-     <td><a href="/userCount/{{@key}}">{{@key}}</a></td>
+     <td><a href="/userCount/{{this.name}}">{{this.name}}</a></td>
+
+      <td>{{this.count}}</td> 
   </tr>
   {{/each}}
+
+
+
 </table>
+
+</div>
+
 </div>
