@@ -44,13 +44,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/', async (req, res) => {
     const count = await greetInstance.greetCountForUser();
   const message = greet.greetMessage();
-  
-
-console.log(count)
+ const validation = greet.validationPopMessage()
+//console.log(count)
     res.render('index', {
        count,
-       validationMessage: '',
-        greetingMessage:message
+        greetingMessage:message,
+        validationMessage:validation,
     });
 });
 
@@ -97,7 +96,8 @@ app.post('/greetings', async (req, res) => {
     const name = req.body.name;
     const language = req.body.language;
 
-     const validationMessage =   greet.handleGreetBtnClick(name, language);
+     const validationMessage =  greet.handleGreetBtnClick(name, language);
+    
      const greetingMessage =   greet.getGreetingMessage(language, name);
 
      const nameExists = await greetInstance.existingName(name);
@@ -118,7 +118,7 @@ app.post('/greetings', async (req, res) => {
 
 
 
-const PORT = process.env.PORT || 3010;
+const PORT = process.env.PORT || 3011;
 app.listen(PORT, () => {
     console.log('App started at port', PORT);
 });

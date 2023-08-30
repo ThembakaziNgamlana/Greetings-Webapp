@@ -48,6 +48,7 @@ export default function createGreetingApp() {
       } 
       
   }
+
  function greetMessage(){
   return greeting
  }
@@ -62,11 +63,17 @@ export default function createGreetingApp() {
       } else if (!selectedName) {
           return "Please enter your name.";
       }
+
+  }
+
+  function validationPopMessage(){
+    validationMessage
   }
 
   return {
       incrementPeopleNamesCount,
        getNameCount,
+       validationPopMessage,
       getGreetingMessage,
       handleGreetBtnClick,
       greetFunction,
