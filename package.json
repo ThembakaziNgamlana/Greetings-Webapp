@@ -37,5 +37,8 @@
     "jest": "^29.6.4",
     "pg": "^8.11.3",
     "pg-promise": "^11.5.4"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0"
   }
 }
