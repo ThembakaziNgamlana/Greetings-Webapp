@@ -65,15 +65,10 @@ export default function createGreetingApp() {
       }
 
   }
-
-  function validationPopMessage(){
-    validationMessage
-  }
-
+ 
   return {
       incrementPeopleNamesCount,
        getNameCount,
-       validationPopMessage,
       getGreetingMessage,
       handleGreetBtnClick,
       greetFunction,

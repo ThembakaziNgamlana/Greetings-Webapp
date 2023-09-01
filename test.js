@@ -10,7 +10,7 @@ const db = pgp(connectionString);
 const greetDb = Greetdb(db);
 
 describe('Greetdb functions', function() {
-  this.slow(3000); // Set a threshold for slow tests
+  this.slow(3000); 
   this.timeout(5000); // Set a timeout for the entire test suite
 
   beforeEach(async function() {
@@ -28,7 +28,7 @@ describe('Greetdb functions', function() {
     await greetDb.addNames('Akhona');
     await greetDb.update('Akhona');
     const result = await greetDb.getAllNamesWithCounts('Akhona');
-    assert.strictEqual(result[0].count, 2); // Assuming count is correctly updated
+    assert.strictEqual(result[0].count, 2); 
   });
 
   it('should retrieve names', async () => {

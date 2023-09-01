@@ -23,13 +23,17 @@ body{
     font-size: 24px; 
 } 
 
-/* .greet {
+
+
+
+ 
+ /* .greet {
   background-image: url('/public/images/demo.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}  */
-
+}  
+ */
 
 .message{
   text-align: center;

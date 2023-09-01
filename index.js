@@ -4,6 +4,10 @@ import bodyParser from 'body-parser';
 import pgPromise from 'pg-promise';
 import createGreetingApp from './greetings.js';
 import  greetings from  './greetdb.js';
+import flash from 'express-flash';
+import session from 'express-session';
+
+
 
 let useSSL = false;
 let local = process.env.LOCAL || false;
@@ -22,6 +26,13 @@ const hbs = exphbs.create({
 });
 
 
+// app.use(session({
+//     secret: 'your-secret-key',
+//     resave: false,
+//     saveUninitialized: true,
+// }));
+// app.use(flash());
+
 
 
 
@@ -34,7 +45,12 @@ const db = pgp({
 
 
 const greetInstance =  greetings(db);
+
+
+
 app.use(express.static('public'));
+
+
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
@@ -42,34 +58,21 @@ app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', async (req, res) => {
-    const count = await greetInstance.greetCountForUser();
-  const message = greet.greetMessage();
- const validation = greet.validationPopMessage()
-//console.log(count)
+
+
+ const validationMessage = greet.handleGreetBtnClick()
+ 
+
     res.render('index', {
-       count,
-        greetingMessage:message,
-        validationMessage:validation,
+
+    
     });
 });
-
-
-
-
-
-
-// app.get('/greetings', (req, res) => {
-   
-//     res.render('index', { greetedCount: greet.getNameCount() });
-// });
 
 
 app.get('/greeted', async (req, res) => {
    
     const greetedNames = await greetInstance.showNames();
-    
-   // console.log(greetedNames);
-   // console.log(count);
     res.render('greeted', {
          //count,
         greetedNames: greetedNames,
@@ -95,25 +98,35 @@ app.post('/reset', async (req, res) => {
 app.post('/greetings', async (req, res) => {
     const name = req.body.name;
     const language = req.body.language;
+   const greetingMessage =   greet.getGreetingMessage(language, name);
 
+  
      const validationMessage =  greet.handleGreetBtnClick(name, language);
-    
-     const greetingMessage =   greet.getGreetingMessage(language, name);
+     if (!validationMessage) {
+        const nameExists = await greetInstance.existingName(name);
 
-     const nameExists = await greetInstance.existingName(name);
-
-    if (!nameExists) {
-        await greetInstance.addNames(name);
-    } else {
-        await greetInstance.update(name);
+        if (!nameExists) {
+            await greetInstance.addNames(name);
+        } else {
+            await greetInstance.update(name);
+        }
+       
     }
+
    
-    // Add the name to the list of names
-   // greetInstance.addNames(name);
+    const message = greet.greetMessage();
+    const count = await greetInstance.greetCountForUser();
+console.log(validationMessage)
+ 
+ 
 
-    res.redirect('/');
+    res.render('index' ,{
+        validationMessage,
+        message,
+        count,
+    }
+    )
 });
-
 
 
 
