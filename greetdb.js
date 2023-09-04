@@ -22,8 +22,8 @@ export default function greetingsDB(db) {
   }
 
   async function getCountForName(name) {
-    const results = await db.many('SELECT count FROM users WHERE name = $1', [name]);
-    return results;
+    const results = await db.oneOrNone('SELECT * FROM users WHERE name = $1', [name]);
+    return results.count;
   }
 
   async function doesNameExist(name) {
