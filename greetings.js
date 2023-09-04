@@ -56,12 +56,15 @@ export default function createGreetingApp() {
 
 
   function handleGreetBtnClick(selectedName, selectedLanguage) {
+    const nameRegex = /^[A-Za-z\s]+$/;
       if (!selectedName && selectedLanguage == null) {
           return "Please enter name and select language.";
       } else if (selectedLanguage == null) {
           return "Language not selected.";
       } else if (!selectedName) {
           return "Please enter your name.";
+      }else if(!nameRegex.test(selectedName)){
+        return "Name should only contain letters and spaces.";
       }
 
   }
