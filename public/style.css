@@ -55,14 +55,6 @@ body{
  /* margin: 0 auto;*/
   
 }
-.user-count-page {
-  background-image: url('./images/demo2.avif'); /* Add your background image URL here */
-   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  text-align: center;
-  font-size: 24px;
-}
 
 input[type="text"] {
   display: inline-block;
