@@ -1,6 +1,6 @@
 import { strict as assert } from 'assert';
 import pgPromise from 'pg-promise';
-import Greetdb from './greetdb.js'; 
+import Greetdb from '../greetdb.js'; 
 
 const pgp = pgPromise();
 
@@ -19,33 +19,33 @@ describe('Greetdb functions', function() {
   });
 
   it('adds a name to the database', async function() {
-    await greetDb.addNames('Themby');
-    const result = await greetDb.showNames();
+    await greetDb.addName('Themby');
+    const result = await greetDb.getAllNames();
     assert.deepStrictEqual(result, [{ name: 'Themby' }]);
   });
 
   it('updates the count for a name', async function() {
-    await greetDb.addNames('Akhona');
-    await greetDb.update('Akhona');
-    const result = await greetDb.getAllNamesWithCounts('Akhona');
+    await greetDb.addName('Akhona');
+    await greetDb.updateCountForName('Akhona');
+    const result = await greetDb.getCountForName('Akhona');
     assert.strictEqual(result[0].count, 2); 
   });
 
   it('should retrieve names', async () => {
-    await greetDb.addNames('David');
-    const result = await greetDb.showNames();
-    assert.deepStrictEqual(result, [{ name: 'David' }]);
+    await greetDb.addName('Zola');
+    const result = await greetDb.getAllNames();
+    assert.deepStrictEqual(result, [{ name: 'Zola' }]);
   });
 
 
 
   it('should add a name and return the count', async () => {
-    await greetDb.addNames('John');
-    const count = await greetDb.greetCountForUser();
+    await greetDb.addName('Ebby');
+    const count = await greetDb. getGreetCountForUser();
     assert.strictEqual(parseInt(count), 1);
   });
   it('should return an empty list of names when no names have been added', async () => {
-    const names = await greetDb.showNames();
+    const names = await greetDb.getAllNames();
     assert.deepStrictEqual(names, []);
   });
 
