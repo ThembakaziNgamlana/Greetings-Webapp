@@ -1,15 +1,16 @@
-label {
+.label {
   display: inline-block;
   width: 100px;
   text-align: right;
   margin-right: 5px;
     border: 1px solid yellow;
-  }
+}
+  /* }
   input[type="text"] {
     display: inline-block;
     width: 200px;
     padding: 5px;
-  }
+  } */
   /* .greetPage{
     background-color: yellow;
   } */
@@ -27,13 +28,7 @@ body{
 
 
  
- /* .greet {
-  background-image: url('/public/images/demo.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}  
- */
+
 
 .message{
   text-align: center;
@@ -60,6 +55,14 @@ body{
  /* margin: 0 auto;*/
   
 }
+.user-count-page {
+  background-image: url('./images/demo2.avif'); /* Add your background image URL here */
+   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  text-align: center;
+  font-size: 24px;
+}
 
 input[type="text"] {
   display: inline-block;
@@ -75,7 +78,27 @@ input[type="text"] {
 .enter{
   text-align: center;
 }
-
+    /* Additional styling for the table and page */
+    table {
+      width: 80%; /* Adjust as needed */
+      margin: 0 auto; /* Center the table horizontally */
+      border-collapse: collapse;
+  }
+  th, td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid yellowgreen;
+  }
+  th {
+      background-color: yellowgreen;
+  }
+  .greet {
+      text-align: center; /* Center page content */
+      padding: 20px;
+      background-color: yellowgreen; /* Add a semi-transparent background */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+  }
 .lang{
   display: inline-block;
     padding-top: 10px;

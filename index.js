@@ -40,7 +40,7 @@ app.get('/greeted', async (req, res) => {
 });
 
 app.get('/userCount/:userName', async (req, res) => {
-  const userName = req.params.userName;
+  const userName = req.params.userName.toLowerCase();
   const greetCountForUser = await greetInstance.getCountForName(userName);
   const greetMessage = `${userName} has been greeted ${greetCountForUser[0].count} times.`;
   res.send(greetMessage);
@@ -53,7 +53,7 @@ app.post('/reset', async (req, res) => {
 });
 
 app.post('/greetings', async (req, res) => {
-  const name = req.body.name;
+  const name = req.body.name.toLowerCase();
   const language = req.body.language;
   const greetingMessage = greet.getGreetingMessage(language, name);
   const validationMessage = greet.handleGreetBtnClick(name, language);

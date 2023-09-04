@@ -18,7 +18,7 @@ export default function greetingsDB(db) {
   }
 
   async function updateCountForName(name) {
-    await db.none('UPDATE users SET count = count + 1 WHERE name = $1', [name]);
+    await db.any('UPDATE users SET count = count + 1 WHERE name = $1', [name]);
   }
 
   async function getCountForName(name) {
