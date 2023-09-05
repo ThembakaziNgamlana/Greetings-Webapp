@@ -36,7 +36,7 @@ describe('Greetdb functions', function() {
 
   it('should add a name and return the count', async () => {
     await greetDb.addName('Ebby');
-    const count = await greetDb. getGreetCountForUser();
+    const count = await greetDb. getGreetCountForUsers();
     assert.strictEqual(parseInt(count), 1);
   });
   it('should return an empty list of names when no names have been added', async () => {
