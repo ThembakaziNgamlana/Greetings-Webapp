@@ -4,15 +4,15 @@ export default function createGreetingApp() {
   let validationMessage = '';
   let greeting = '';
 
-  function incrementPeopleNamesCount(selectedName) {
-      if (!greetedNames[selectedName]) {
-          greetedNames[selectedName] = 1;
-          greetCount++;
-          return false;
-      }
-      greetedNames[selectedName]++;
-      return true;
-  }
+//   function increment(selectedName) {
+//       if (!greetedNames[selectedName]) {
+//           greetedNames[selectedName] = 1;
+//           greetCount++;
+//           return false;
+//       }
+//       greetedNames[selectedName]++;
+//       return true;
+//   } 
 
   function getGreetCountForUser(userName) {
       return greetedNames[userName] || 0;
@@ -70,7 +70,7 @@ export default function createGreetingApp() {
   }
  
   return {
-      incrementPeopleNamesCount,
+      //increment,
        getNameCount,
       getGreetingMessage,
       handleGreetBtnClick,

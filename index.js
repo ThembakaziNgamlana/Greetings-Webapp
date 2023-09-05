@@ -28,7 +28,8 @@ app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', async (req, res) => {
-  const validationMessage = greet.handleGreetBtnClick();
+  //const validationMessage = greet.handleGreetBtnClick();
+  
   res.render('index', {});
 });
 
@@ -42,6 +43,7 @@ app.get('/greeted', async (req, res) => {
 app.get('/userCount/:userName', async (req, res) => {
   const userName = req.params.userName.toLowerCase();
   const greetCountForUser = await greetInstance.getCountForName(userName);
+  
   const greetMessage = `${userName} has been greeted ${greetCountForUser} times.`;
   res.send(greetMessage);
 });
@@ -56,23 +58,21 @@ app.post('/greetings', async (req, res) => {
   const name = req.body.name.toLowerCase();
   const language = req.body.language;
   const greetingMessage = greet.getGreetingMessage(language, name);
+  const message = greet.greetMessage();
   const validationMessage = greet.handleGreetBtnClick(name, language);
 
   if (!validationMessage) {
-    const nameExists = await greetInstance.doesNameExist(name);
+     await greetInstance.increment(name);
+ }
+  
 
-    if (!nameExists) {
-      await greetInstance.addName(name);
-    } else {
-      await greetInstance.updateCountForName(name);
-    }
-  }
-
-  const message = greet.greetMessage();
-  const count = await greetInstance. getCountForName(name);
+  
+  const count = await greetInstance. getGreetCountForUser();
+  console.log(count)
 
   res.render('index', {
     validationMessage,
+    //greetingMessage,
     message,
     count,
   });
